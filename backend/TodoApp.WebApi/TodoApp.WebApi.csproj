@@ -6,4 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TodoApp.Data\TodoApp.Data.csproj" />
+    <ProjectReference Include="..\TodoApp.Services\TodoApp.Services.csproj" />
+  </ItemGroup>
+
 </Project>
