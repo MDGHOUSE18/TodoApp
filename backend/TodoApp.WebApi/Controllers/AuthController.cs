@@ -43,15 +43,15 @@ namespace TodoApp.WebApi.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequestDto dto)
         {
-            var user = await _userManager.FindByNameAsync(dto.Email);
+            var user = await _userManager.FindByEmailAsync(dto.Email);
             if (user == null)
             {
-                return Unauthorized(new { Message = "Invalid email or password" });
+                return Unauthorized(new { Message = "Invalid email" });
             }
             var result = await _signInManager.CheckPasswordSignInAsync(user, dto.Password, false);
             if (!result.Succeeded)
             {
-                return Unauthorized(new { Message = "Invalid email or password" });
+                return Unauthorized(new { Message = "Invalid password" });
             }
             // Generate JWT
             var token = GenerateJwtToken(user);
